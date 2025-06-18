@@ -1,5 +1,13 @@
 package com.umdearborn;
 
 public class QuantityObserver implements OrderObserver {
-    public void update(Order order) {}
+    @Override
+    public void update(Order order) {
+        if (order.getCount() > 5) {
+            System.out.println("Free shipping applied.");
+            order.setShippingCost(0);
+        } else {
+            order.setShippingCost(10);
+        }
+    }
 }
